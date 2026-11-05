@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme{
+   --animate-wiggle: wiggle 3s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: translate(0,650px);
+    }
+    50% {
+      transform: translate(0,-150px);
+    }
+  }
+
+
+  --animate-missing: missing 1s ease-in-out infinite;
+  @keyframes missing {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+---
+import  HeroButtons from "./HeroButtons.astro";
+import HeroCode from "./HeroCode.astro"
+---
+  <div 
+  class="absolute w-full animate-wiggle z-0 left-0  bg-blue-400 blur-2xl top-10 h-3 -translate-y-1/3"
+  style=`transform: translate`
+  ></div>
+
+<section class="mt-15 flex items-center relative overflow-x-hidden">
+<div class="flex flex-col max-w-200 gap-5 z-20 relative">
+  <span class="text-zinc-400">// Hola, mundo</span>
+  <span class="text-blue-500 flex gap-2 items-center">
+    &gt;  pnpm run wilkin 
+    <div class="w-2 h-5 bg-blue-500 animate-missing"></div>
+  </span>
+  <h1 class="text-white text-8xl ">Código limpio.<br>
+      Interfaces<br>
+      <span class="text-blue-400">con pulso.</span>
+  </h1>
+  <p class="text-zinc-400 max-w-120 text-xl">
+    Soy Wilkin, desarrollador frontend autodidacta. 
+    Convierto ideas en interfaces rápidas, accesibles
+     y con movimiento cuidado, con React, Vite y Tailwind.
+  </p>
+  <HeroButtons />
+</div>
+  <HeroCode />
+
+</section>
