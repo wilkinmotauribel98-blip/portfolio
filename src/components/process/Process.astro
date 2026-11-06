@@ -23,12 +23,12 @@ import ProcesCard  from "./ProcesCard.astro";
     },
   ]
 ---
-<section id="process" class="pb-20 ">
+<section id="process" class="pb-20  ">
   <h2 class="text-5xl text-white mb-7">
     <span class="text-blue-500">~/</span>
     proceso
   </h2>
-  <div class="flex gap-5">
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
     {processData.map((e)=> <
     ProcesCard 
     title={e.title}
