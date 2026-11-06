@@ -1,6 +1,37 @@
-<section class="mt-205" id="projects">
+---
+import  Project  from "./Project.astro";
+---
+
+
+<section class="mt-20 pb-20" id="projects">
   <div class="flex justify-between">
     <h2 class="text-white text-5xl font-semibold"><span class="text-blue-500">~/</span>proyectos</h2>
     <span class="text-zinc-500">2 directorios</span>
   </div>
+  <section class="flex gap-10 ">
+    <Project 
+    title="NIFLIX" 
+    category="e-commerce" 
+    badges={['React', 'Tailwind', 'Vite']}
+    description="Tienda de lujo con estética editorial oscura,construida en React."
+    image="https://github.com/wilkinmotauribel98-blip/ecommerce-app/blob/main/docs/home.png?raw=true"
+    url="https://wilkinmotauribel98-blip.github.io/ecommerce-app/"
+    />
+    <Project 
+    title="NIFLIX" 
+    category="e-commerce" 
+    badges={['React', 'Tailwind', 'Vite']}
+    description="Tienda de lujo con estética editorial oscura,construida en React."
+    image="https://github.com/wilkinmotauribel98-blip/ecommerce-app/blob/main/docs/home.png?raw=true"
+    url="https://wilkinmotauribel98-blip.github.io/ecommerce-app/"
+    />
+    <Project 
+    title="NIFLIX" 
+    category="e-commerce" 
+    badges={['React', 'Tailwind', 'Vite']}
+    description="Tienda de lujo con estética editorial oscura,construida en React."
+    image="https://github.com/wilkinmotauribel98-blip/ecommerce-app/blob/main/docs/home.png?raw=true"
+    url="https://wilkinmotauribel98-blip.github.io/ecommerce-app/"
+    />
+  </section>
 </section>

@@ -1,0 +1,36 @@
+---
+import  Dot  from "../ui/Dot.astro";
+type Props = {
+  title: string,
+  category: string,
+  badges: Array<string>,
+  description: string,
+  image:string,
+  url:string
+}
+
+const { title, category, badges, description, image, url } = Astro.props
+---
+
+<a href={url}>
+  <article class="border border-zinc-700 rounded-2xl bg-secondary z-50 flex w-96 pb-5  flex-col mt-10 py-2">
+  <div class="flex gap-1 border-b items-center border-zinc-700 px-5">
+    <Dot size="10" bg="#2B3342" />
+    <Dot size="10" bg="#2B3342" />
+    <Dot size="10" bg="#2B3342" />
+    <h3 class="text-zinc-500 ml-2 lowercase ">{title}/</h3>
+  </div>
+
+<div class="flex flex-col gap-2">
+  <div>
+    <img src={image} alt="">
+  </div>
+  <span class="text-blue-400 ml-4">// {category}</span>
+  <h3 class="text-white text-5xl ml-4 font-semibold">{title}</h3>
+  <p class="text-zinc-500 ml-4 text-pretty max-w-80">{description}</p>
+  <div class="flex gap-2 ml-4">
+    {badges.map((e) => <span class="text-gray-500 border border-zinc-800 w-fit py-1 px-2 bg-black rounded ">{e}</span>)}
+  </div>
+</div>
+</article>
+</a>

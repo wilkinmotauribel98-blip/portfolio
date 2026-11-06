@@ -1,0 +1,17 @@
+---
+import  Badge  from "../ui/Badge.astro";
+
+const stack = ['React', 'TypeScript', 'Vite', 'Zustand', 'Tailwind CSS v4'];
+
+---
+
+<section id="stack" class="pb-20">
+  <h2 class="text-5xl text-white mb-6">
+    <span class="text-blue-500">~/</span>
+    stack
+  </h2>
+  <div class="flex gap-3">
+    {stack.map(e=><Badge title={e}/>)}
+  </div>
+</section>
+

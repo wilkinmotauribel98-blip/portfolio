@@ -1,12 +1,26 @@
-<header class="bg-slate-950 py-5 px-5 flex justify-between max-w-360 m-auto">
-  <nav class="flex gap-1 text-zinc-400">
+---
+import Dot from './ui/Dot.astro'
+---
+
+
+
+
+<header class="bg-slate-950 py-5 px-5 flex justify-between max-w-300 z-50 m-auto">
+  
+  <nav class="flex gap-1 items-center text-zinc-400 z-50">
+    <div class="flex gap-2 mr-5">
+    <Dot size="12" bg="#FF5F57"/>
+    <Dot size="12" bg="#FEBC2E"/>
+    <Dot size="12" bg="#28C840"/>
+    
+    </div>
     <a href="#start" class="px-3 pb-2 border-b-2  border-blue-500">incio.jsx</a>
     <a href="#projects" class="px-3 pb-2">proyectos.jsx</a>
     <a href="#stack" class="px-3 pb-2">stack.jsx</a>
     <a href="#contact" class="px-3 pb-2">contacto.sh</a>
   </nav>
   <div class="text-zinc-400 flex gap-2 items-center ">
-    <span class="w-2 h-2 rounded-full bg-green-400"></span>
+    <span class="w-2 h-2 rounded-full  bg-green-400"></span>
     <span>main</span>
     <span class="w-1 h-1 rounded-full bg-zinc-400"></span>
     <span>disponible</span>

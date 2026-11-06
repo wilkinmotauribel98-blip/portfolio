@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
+
+
+
 @theme{
+   --color-secondary: #0C1018;
    --animate-wiggle: wiggle 3s ease-in-out infinite;
   @keyframes wiggle {
     0%,

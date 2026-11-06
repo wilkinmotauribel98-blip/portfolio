@@ -1,0 +1,39 @@
+---
+import ProcesCard  from "./ProcesCard.astro";
+  const processData = [
+    {
+      title: 'Estructura',
+      description: 'Semántica primero: HTML claro y accesible.',
+      number: 1
+    },
+    {
+      title: 'Componentes',
+      description: 'Piezas pequeñas y reutilizables React',
+      number: 2
+    },
+    {
+      title: 'Estado',
+      description: 'Lógica simple y predecible con Zustand',
+      number: 3
+    },
+    {
+      title: 'Pulido',
+      description: 'Animaciones, estados vacíos y detalles finos.',
+      number: 4
+    },
+  ]
+---
+<section id="process" class="pb-20 ">
+  <h2 class="text-5xl text-white mb-7">
+    <span class="text-blue-500">~/</span>
+    proceso
+  </h2>
+  <div class="flex gap-5">
+    {processData.map((e)=> <
+    ProcesCard 
+    title={e.title}
+    description={e.description}
+    number={e.number}
+  />)}  
+  </div>
+</section>
