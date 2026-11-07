@@ -7,25 +7,136 @@ import HeroCode from "./HeroCode.astro"
   style=`transform: translate`
   ></div>
 
-<section class="mt-15 flex md:flex-row flex-col gap-5 md:items-center justify-between relative overflow-x-hidden" id="start">
+<section class="mt-15 flex md:flex-row flex-col gap-5 md:items-center justify-between relative overflow-x-hidden" id="start" data-hero>
   
 <div class="flex flex-col  gap-5 z-20 relative">
-  <span class="text-zinc-400">// Hola, mundo</span>
-  <span class="text-blue-500 flex gap-2 items-center">
-    &gt;  pnpm run wilkin 
-    <div class="w-2 h-5 bg-blue-500 animate-missing"></div>
+  <span class="text-zinc-400 font-mono" data-intro>// Hola, mundo</span>
+  <span class="text-blue-500 flex gap-2 items-center font-mono">
+    <span data-type-command>&gt;  pnpm run wilkins</span>
+    <span class="w-2 h-5 bg-blue-500 animate-missing"></span>
   </span>
-  <h1 class="text-white text-7xl ">Código limpio.<br>
-      Interfaces<br>
-      <span class="text-blue-400">con pulso.</span>
+  <h1 class="text-white text-7xl" aria-label="Código limpio. Interfaces con pulso.">
+      <span class="block" data-type-line>Código limpio.</span>
+      <span class="block" data-type-line>Interfaces</span>
+      <span class="block text-blue-400" data-type-line>con pulso.</span>
   </h1>
-  <p class="text-zinc-400 max-w-120 text-xl">
-    Soy Wilkin, desarrollador frontend autodidacta. 
+  <p class="text-zinc-400 max-w-120 text-xl" data-reveal>
+    Soy Wilkins, desarrollador frontend autodidacta. 
     Convierto ideas en interfaces rápidas, accesibles
      y con movimiento cuidado, con React, Vite y Tailwind.
   </p>
-  <HeroButtons />
+  <div data-reveal><HeroButtons /></div>
 </div>
   <HeroCode />
 
 </section>
+
+<script>
+import gsap from "gsap";
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const hero = document.querySelector("[data-hero]");
+
+type Prepared = {
+  el: HTMLElement;
+  text: string;
+  textNode: Text;
+  isCommand: boolean;
+};
+
+if (hero) {
+  const command = hero.querySelector<HTMLElement>("[data-type-command]");
+  const lines = Array.from(hero.querySelectorAll<HTMLElement>("[data-type-line]"));
+  const typed = [command, ...lines].filter(
+    (el): el is HTMLElement => el !== null,
+  );
+  const intro = hero.querySelector<HTMLElement>("[data-intro]");
+  const reveals = Array.from(hero.querySelectorAll<HTMLElement>("[data-reveal]"));
+  const code = hero.querySelector<HTMLElement>("[data-hero-code]");
+  const animated = [...typed, ...reveals, intro, code].filter(
+    (el): el is HTMLElement => el !== null,
+  );
+
+  if (reduceMotion) {
+    animated.forEach((el) => {
+      el.style.visibility = "visible";
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+  } else {
+    const cursor = document.createElement("span");
+    cursor.className = "hero-cursor";
+    cursor.setAttribute("aria-hidden", "true");
+
+    const prepared: Prepared[] = typed.map((el) => {
+      const text = el.textContent ?? "";
+      el.textContent = "";
+      const textNode = document.createTextNode("");
+      el.append(textNode);
+      return { el, text, textNode, isCommand: el === command };
+    });
+
+    gsap.set(animated, { visibility: "visible" });
+    if (intro) gsap.set(intro, { opacity: 0, y: 8 });
+    gsap.set(reveals, { opacity: 0, y: 16 });
+    if (code) gsap.set(code, { opacity: 0, y: 24 });
+
+    const typeInto = (item: Prepared, cps: number) => {
+      const base = 1 / cps;
+      let shown = 0;
+
+      const tl = gsap.timeline();
+
+      if (!item.isCommand) {
+        tl.call(() => {
+          item.el.append(cursor);
+          cursor.classList.add("is-typing");
+        });
+      }
+
+      for (const char of item.text) {
+        const jitter = 0.6 + Math.random() * 0.8;
+        const pause = /[.,;:!?]/.test(char) ? base * 4 : 0;
+
+        tl.to(
+          {},
+          {
+            duration: base * jitter + pause,
+            onComplete: () => {
+              shown += char.length;
+              item.textNode.nodeValue = item.text.slice(0, shown);
+            },
+          },
+        );
+      }
+
+      if (!item.isCommand) {
+        tl.call(() => cursor.classList.remove("is-typing"));
+      }
+
+      return tl;
+    };
+
+    const tl = gsap.timeline({ delay: 0.3 });
+
+    if (intro) {
+      tl.to(intro, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+    }
+
+    prepared.forEach((item, index) => {
+      tl.add(typeInto(item, item.isCommand ? 24 : 30));
+      tl.to({}, { duration: index === 0 ? 0.35 : 0.18 });
+    });
+
+    tl.call(() => cursor.remove());
+    tl.to(
+      reveals,
+      { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: "power3.out" },
+      "-=0.1",
+    );
+    if (code) {
+      tl.to(code, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, "-=0.55");
+    }
+  }
+}
+</script>

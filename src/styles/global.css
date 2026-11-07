@@ -1,9 +1,50 @@
 @import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource-variable/jetbrains-mono";
+
+html[data-js] [data-intro],
+html[data-js] [data-type-command],
+html[data-js] [data-type-line],
+html[data-js] [data-reveal],
+html[data-js] [data-hero-code] {
+  visibility: hidden;
+}
+
+.hero-cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 0.85em;
+  margin-left: 0.08em;
+  vertical-align: -0.05em;
+  background-color: #60a5fa;
+  animation: hero-cursor-blink 1s steps(1) infinite;
+}
+
+.hero-cursor.is-typing {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes hero-cursor-blink {
+  0%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
 
 
 
 
 @theme{
+   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
    --color-secondary: #0C1018;
    --animate-wiggle: wiggle 3s ease-in-out infinite;
   @keyframes wiggle {

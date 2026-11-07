@@ -1,6 +1,15 @@
 ---
 import '../styles/global.css';
 import Header from '../components/header/Header.astro'
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const site = Astro.site ?? new URL("https://wilkinmotauribel98-blip.github.io");
+const siteUrl = new URL(base, site).href.replace(/\/$/, "");
+const title = "Wilkins Mota · Frontend Developer";
+const description = "Desarrollador frontend autodidacta. Interfaces rápidas y con detalle en React, TypeScript y Tailwind.";
+
 ---
 
 <!doctype html>
@@ -8,12 +17,26 @@ import Header from '../components/header/Header.astro'
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Portfolio web - Wilkins Mota Fraide | Frontend junior Developer Portfolio</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${siteUrl}/`} />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${siteUrl}/`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Wilkins Mota, Frontend Developer. React, TypeScript y Tailwind." />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+		<script is:inline>document.documentElement.dataset.js = "";</script>
 	</head>
-	<body class="relative h-dvh bg-black text-slate-200">
+	<body class="relative bg-black text-slate-200">
     <div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
     <Header />
 		<slot />

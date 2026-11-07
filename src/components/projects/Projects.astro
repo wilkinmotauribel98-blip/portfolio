@@ -6,25 +6,25 @@ import  Project  from "./Project.astro";
 <section class="mt-20 pb-20 bg-black" id="projects">
   <div class="flex justify-between items-center">
     <h2 class="text-white text-4xl font-semibold"><span class="text-blue-500">~/</span>proyectos</h2>
-    <span class="text-zinc-500">2 directorios</span>
+    <span class="text-zinc-500 font-mono">2 directorios</span>
   </div>
-  <section class="flex flex-wrap md:flex-nowrap gap-7 ">
+  <section class="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-7 ">
     <Project 
     title="NIFLIX" 
     category="e-commerce" 
     badges={['React', 'Tailwind', 'Vite']}
-    description="Tienda de lujo con estética editorial oscura,construida en React."
+    description="Tienda de lujo con estética editorial oscura, construida en React."
     image="https://github.com/wilkinmotauribel98-blip/ecommerce-app/blob/main/docs/home.png?raw=true"
     url="https://wilkinmotauribel98-blip.github.io/ecommerce-app/"
 
     />
     <Project 
-    title="NIFLIX" 
-    category="e-commerce" 
-    badges={['React', 'Tailwind', 'Vite']}
-    description="Tienda de lujo con estética editorial oscura,construida en React."
-    image="https://github.com/wilkinmotauribel98-blip/ecommerce-app/blob/main/docs/home.png?raw=true"
-    url="https://wilkinmotauribel98-blip.github.io/ecommerce-app/"
+    title="CINEFY" 
+    category="Entertainment" 
+    badges={['React', 'Tailwind', 'Vite', 'TypeScript']}
+    description="Descubre películas y series, Busca títulos en tendencia, y guarda tus favoritos de forma local."
+    image="https://github.com/wilkinmotauribel98-blip/cinefy/blob/main/docs/home.jpg?raw=true"
+    url="https://wilkinmotauribel98-blip.github.io/cinefy/"
 
     />
     
