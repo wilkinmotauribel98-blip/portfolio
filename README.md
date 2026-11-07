@@ -96,7 +96,7 @@ pnpm install
 pnpm dev
 ```
 
-The dev server starts at `http://localhost:4321`.
+The dev server starts at `http://localhost:4321/portfolio/`.
 
 ### Production build
 
