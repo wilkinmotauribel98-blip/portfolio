@@ -8,7 +8,7 @@ Personal portfolio for **Wilkin Mota Fraide**, a self-taught frontend developer.
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 ![Node](https://img.shields.io/badge/Node-%3E%3D22.23.4-339933?logo=node.js&logoColor=white)
 
-**Live site:** https://wilkinmotauribel98-blip.github.io/portfolio/
+**Live site:** https://portfolio-wilkins6.vercel.app
 
 ## Preview
 
@@ -55,8 +55,6 @@ A four-step process grid (structure, components, state, polish) and a contact bl
 
 ```text
 portfolio/
-├── .github/
-│   └── workflows/         # GitHub Pages deployment
 ├── docs/                  # README screenshots
 ├── public/                # Static assets (favicon, OG image)
 ├── src/
@@ -79,7 +77,8 @@ portfolio/
 ├── astro.config.mjs
 ├── eslint.config.js
 ├── package.json
-└── tsconfig.json
+├── tsconfig.json
+└── vercel.json
 ```
 
 ## Getting Started
@@ -96,7 +95,7 @@ pnpm install
 pnpm dev
 ```
 
-The dev server starts at `http://localhost:4321/portfolio/`.
+The dev server starts at `http://localhost:4321/`.
 
 ### Production build
 
@@ -129,11 +128,19 @@ The hero script (`src/components/hero/Hero.astro`) uses GSAP timelines instead o
 
 ## Deployment
 
-Every push to `main` triggers `.github/workflows/deploy.yml`, which installs dependencies with pnpm, builds the site, and publishes `dist/` to GitHub Pages.
+The site is deployed on Vercel as a static Astro build (`dist/`). Every push to `main` triggers a production deployment once the repository is imported in Vercel.
 
-The project is served as a project site under `/portfolio/`, so `site` and `base` are set in `astro.config.mjs`.
+1. In Vercel, **Add New → Project** and import `wilkinmotauribel98-blip/portfolio`.
+2. Vercel detects **Astro** automatically. Keep the defaults: `pnpm build` and output `dist/` (also declared in `vercel.json`).
+3. If your production URL differs from `https://portfolio-wilkins6.vercel.app`, update `site` in `astro.config.mjs` (it drives canonical and Open Graph URLs).
+4. Deploy. Make sure **Deployment Protection** is disabled so the portfolio is publicly accessible.
 
-In the repository, make sure **Settings → Pages → Build and deployment → Source** is set to **GitHub Actions** before the first deployment.
+Deploy from the CLI instead:
+
+```sh
+pnpm build
+vercel --prod
+```
 
 ## Contact
 

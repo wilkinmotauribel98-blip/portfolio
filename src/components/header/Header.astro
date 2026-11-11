@@ -2,21 +2,19 @@
 import Dot from "../ui/Dot.astro";
 ---
 
-
-
-
-<header class=" py-5 px-3 gap-2 flex flex-col justify-between max-w-300 z-50 m-auto">
-  <nav class="flex flex-col  gap-2  text-zinc-400 z-50 font-mono">
+<header class="py-5 px-3 gap-2 flex flex-col md:flex-row md:items-center justify-between max-w-300 z-50 m-auto">
+  <nav class="flex flex-col sm:flex-row sm:items-center sm:gap-6  gap-2  text-zinc-400 z-50 font-mono">
     <div class="flex gap-2 ">
     <Dot size="12" bg="#FF5F57"/>
     <Dot size="12" bg="#FEBC2E"/>
     <Dot size="12" bg="#28C840"/>
     </div>
-    <div>
+  
+   <div class="flex">
     <a href="#start" class="px-1.5 pb-2 border-b-2  border-blue-500">inicio.jsx</a>
     <a href="#projects" class="px-1.5 pb-2">proyectos.jsx</a>
     <a href="#stack" class="px-1.5 pb-2">stack.json</a>
-    <a href="#contact" class="px-1 .5pb-2">contacto.sh</a>
+    <a href="#contact" class="px-1.5 hidden sm:block pb-2">contacto.sh</a>
     </div>
   </nav>
   <div class="text-zinc-400 ml-auto w-fit flex gap-2 items-center font-mono">
