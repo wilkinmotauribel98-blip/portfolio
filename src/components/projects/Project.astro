@@ -19,20 +19,22 @@ const { title, category, badges, description, image, url } = Astro.props
     <Dot size="10" bg="#2B3342" />
     <Dot size="10" bg="#2B3342" />
     <Dot size="10" bg="#2B3342" />
-    <h3 class="text-zinc-500 ml-2 lowercase font-mono">{title}/</h3>
+    <h3 class="text-zinc-400 ml-2 lowercase font-mono">{title}/</h3>
   </div>
 
 <div class="flex flex-col gap-2">
   <div>
     <img src={image} 
-    alt=""
+    fetchpriority="high"
+    loading="eager"
+    alt={`Vista previa del proyecto ${title}`}
     >
   </div>
   <span class="text-blue-400 ml-4">// {category}</span>
   <h3 class="text-white text-5xl ml-4 font-semibold">{title}</h3>
-  <p class="text-zinc-500 ml-4 text-pretty max-w-80">{description}</p>
+  <p class="text-zinc-400 ml-4 text-pretty max-w-80">{description}</p>
   <div class="flex gap-2 ml-4">
-    {badges.map((e) => <span class="text-gray-500 border border-zinc-800 w-fit py-1 px-2 bg-black rounded font-mono">{e}</span>)}
+    {badges.map((e) => <span class="text-gray-400 border border-zinc-800 w-fit py-1 px-2 bg-black rounded font-mono">{e}</span>)}
   </div>
 </div>
 </article>
